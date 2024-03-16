@@ -1,0 +1,15 @@
+.link {
+  text-decoration: none;
+  padding-left: var(--mantine-spacing-md);
+  margin-left: var(--mantine-spacing-l);
+  font-size: var(--mantine-font-size-sm);
+  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+
+  @mixin hover {
+    color: red;
+  }
+}
+
+.sublink {
+  margin-left: var(--mantine-spacing-xl);
+}

@@ -1,18 +1,27 @@
 [
     {
       "id": 1,
-      "title": "Films",
-      "slug": "films"
+      "label": "Films",
+      "link": "films",
+      "initiallyOpened": true,
+      "links": [
+        {
+          "id": 1.2,
+          "label": "film1",
+          "link": "film1"
+        }
+      ]
     },
     {
       "id": 2,
-      "title": "Festivals",
-      "slug": "festivals"
+      "label": "Festivals",
+      "link": "festivals",
+      "links": []
     },
     {
       "id": 3,
-      "title": "Short Stories",
-      "slug": "short_stories"
+      "label": "Short Stories",
+      "link": "short_stories"
     }
   ]
   
