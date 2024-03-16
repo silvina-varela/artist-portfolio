@@ -1,3 +1,3 @@
 # Artist Portfolio
-
-Next.js, Mantine, Firebase
+WIP
+Next.js, Mantine, Firebase project with dynamic routing
