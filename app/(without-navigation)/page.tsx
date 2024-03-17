@@ -2,49 +2,54 @@ import Link from "next/link";
 import menuData from "../../data.json";
 import { Box, Button, Title } from "@mantine/core";
 import { BsHeartArrow } from "react-icons/bs";
+import getDocuments from "../../firebase/database/getData";
+import { DocumentData } from "firebase/firestore";
+import VimeoVideo from "../../components/Navbar/VimeoVideo";
 
-const HomePage = () => {
-  return (
-    <Box
-      display={"flex"}
-      style={{
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-      h={"100vh"}
-    >
-      <Box mb={50}>
-        <Title order={1}>Title</Title>
-      </Box>
-      <Box h={"50%"} w={"70%"} style={{ backgroundColor: "grey" }}></Box>
+const HomePage = async () => {
+  const data: DocumentData[] = await getDocuments("data");
 
+  if (data)
+    return (
       <Box
-        mt={10}
-        display="inline-flex"
-        w={"70%"}
-        style={{ justifyContent: "flex-end" }}
+        display={"flex"}
+        style={{
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        h={"100vh"}
       >
-        <Link
-          href={`/[${menuData[0].link}]`}
-          as={`/${menuData[0].link}`}
-          style={{
-            textDecoration: "none",
-            color: "light-dark(var(--mantine-color-gray-7)",
-          }}
+        <Box mb={50}>
+          <Title order={1}>{data[0].title}</Title>
+        </Box>
+        <VimeoVideo videoId={data[0].mainMedia.link} />
+        <Box
+          mt={10}
+          display="inline-flex"
+          w={"65%"}
+          style={{ justifyContent: "flex-end" }}
         >
-          <Button
-            variant="transparent"
-            c={"light-dark(var(--mantine-color-gray-7)"}
-            size="md"
-            rightSection={<BsHeartArrow />}
+          <Link
+            href={`/[${menuData[0].link}]`}
+            as={`/${menuData[0].link}`}
+            style={{
+              textDecoration: "none",
+              color: "light-dark(var(--mantine-color-gray-7)",
+            }}
           >
-            Enter
-          </Button>
-        </Link>
+            <Button
+              variant="transparent"
+              c={"light-dark(var(--mantine-color-gray-7)"}
+              size="md"
+              rightSection={<BsHeartArrow />}
+            >
+              Enter
+            </Button>
+          </Link>
+        </Box>
       </Box>
-    </Box>
-  );
+    );
 };
 
 export default HomePage;
